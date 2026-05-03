@@ -136,8 +136,16 @@ namespace SLZ.Marrow.Warehouse
         }
 
         public abstract void GenerateBarcodeInternal(bool forceGeneration = false);
-        private List<PackedAsset> _packedAssets = new List<PackedAsset>();
-        public List<PackedAsset> PackedAssets { get => _packedAssets; }
+        private List<PackedAsset> _packedAssets;
+        public List<PackedAsset> PackedAssets 
+{ 
+    get 
+    {
+        if (_packedAssets == null)
+            _packedAssets = new List<PackedAsset>();
+        return _packedAssets;
+    } 
+}
 
         public virtual void ImportPackedAssets(Dictionary<string, PackedAsset> packedAssets)
         {
