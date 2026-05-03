@@ -641,11 +641,14 @@ return false;
             }
         }
 
-        public void UnloadCrate(Crate crate)
-        {
-            UnloadCrateAsset(crate, true);
-            InventoryRegistry.Remove(crate.Barcode);
-            _crateRegistry.Remove(crate.Barcode);
+       public void UnloadCrate(Crate crate)
+{
+    UnloadCrateAsset(crate, true);
+    if (crate.Barcode != null)
+    {
+        InventoryRegistry.Remove(crate.Barcode);
+        _crateRegistry.Remove(crate.Barcode);
+    }
             AssetWarehouseMetrics.LoadedScannableCount.Value--;
             AssetWarehouseMetrics.LoadedCrateCount.Value--;
 #if UNITY_EDITOR
