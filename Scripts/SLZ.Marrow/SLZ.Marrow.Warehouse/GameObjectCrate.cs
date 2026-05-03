@@ -68,12 +68,15 @@ namespace SLZ.Marrow.Warehouse
                 PreviewMesh = new MarrowMesh(packedAsset.marrowAsset.AssetGUID);
         }
 
-        public override List<PackedAsset> ExportPackedAssets()
-        {
-            base.ExportPackedAssets();
-            PackedAssets.Add(new PackedAsset("PreviewMesh", PreviewMesh, PreviewMesh.AssetType, "previewMesh"));
-            return PackedAssets;
-        }
+public override List<PackedAsset> ExportPackedAssets()
+{
+    base.ExportPackedAssets();
+    if (PreviewMesh != null)
+    {
+        PackedAssets.Add(new PackedAsset("PreviewMesh", PreviewMesh, PreviewMesh.AssetType, "previewMesh"));
+    }
+    return PackedAssets;
+}
 
 #if UNITY_EDITOR
         public override void GeneratePackedAssets(bool saveAsset = true)
