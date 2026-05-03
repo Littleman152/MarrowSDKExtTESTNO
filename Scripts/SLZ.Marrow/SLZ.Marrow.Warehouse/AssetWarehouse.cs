@@ -491,7 +491,9 @@ namespace SLZ.Marrow.Warehouse
                 }
             }
 
-            return crate.MainAsset.UnloadAsset(forcedUnload);
+            if (crate.MainAsset != null)
+    return crate.MainAsset.UnloadAsset(forcedUnload);
+return false;
         }
 
         public bool UnloadDataCardAsset(DataCard dataCard, bool forcedUnload = false)
